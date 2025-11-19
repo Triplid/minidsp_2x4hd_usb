@@ -1,0 +1,21 @@
+{
+  "name": "MiniDSP 2x4HD USB",
+  "version": "1.0.0",
+  "slug": "minidsp_2x4hd_usb",
+  "description": "USB control for MiniDSP 2x4HD (presets + input status)",
+  "startup": "services",
+  "boot": "auto",
+  "ports": {
+    "8080/tcp": 8080
+  },
+  "homeassistant": "2024.5.0",
+  "map": ["share:rw"],
+  "host_network": false,
+  "devices": [
+    "/dev/bus/usb:/dev/bus/usb:rwm"
+  ],
+  "privileged": ["SYS_RAWIO"],
+  "full_access": false,
+  "apparmor": "default",
+  "image": "local/minidsp_2x4hd_usb-{arch}"
+}
