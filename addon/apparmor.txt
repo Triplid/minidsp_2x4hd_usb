@@ -1,0 +1,26 @@
+# AppArmor profile for miniDSP 2x4HD USB add-on
+# Разрешаем доступ к USB устройствам и стандартным библиотекам
+#include <tunables/global>
+
+/usr/bin/minidsp.py {
+  # Разрешаем чтение/запись к USB
+  /dev/bus/usb/** rw,
+  
+  # Разрешаем доступ к стандартным библиотекам
+  /usr/lib/** r,
+  /usr/bin/** r,
+  /usr/share/** r,
+  
+  # Разрешаем работу с network
+  network inet stream,
+  
+  # Разрешаем доступ к log
+  /var/log/** w,
+  
+  # Разрешаем доступ к временным файлам
+  /tmp/** rw,
+  /dev/shm/** rw,
+  
+  # Разрешаем выполнение
+  /usr/bin/python3 rix,
+}
